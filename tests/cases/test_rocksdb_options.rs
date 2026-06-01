@@ -442,6 +442,15 @@ fn test_set_bytes_per_sync() {
 }
 
 #[test]
+fn test_set_wal_compression() {
+    let path = tempdir_with_prefix("_rust_rocksdb_wal_compression");
+    let mut opts = DBOptions::new();
+    opts.create_if_missing(true);
+    opts.set_wal_compression(DBCompressionType::Zstd);
+    DB::open(opts, path.path().to_str().unwrap()).unwrap();
+}
+
+#[test]
 fn test_set_optimize_filters_for_hits() {
     let path = tempdir_with_prefix("_rust_rocksdb_optimize_filters_for_hits");
     let mut opts = DBOptions::new();

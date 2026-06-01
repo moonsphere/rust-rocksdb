@@ -1121,6 +1121,12 @@ impl DBOptions {
         }
     }
 
+    pub fn set_wal_compression(&mut self, t: DBCompressionType) {
+        unsafe {
+            crocksdb_ffi::crocksdb_options_set_wal_compression(self.inner, t);
+        }
+    }
+
     pub fn set_wal_recovery_mode(&mut self, mode: DBRecoveryMode) {
         unsafe {
             crocksdb_ffi::crocksdb_options_set_wal_recovery_mode(self.inner, mode);

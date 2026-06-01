@@ -2157,6 +2157,10 @@ void crocksdb_options_set_wal_bytes_per_sync(crocksdb_options_t* opt,
   opt->rep.wal_bytes_per_sync = v;
 }
 
+void crocksdb_options_set_wal_compression(crocksdb_options_t* opt, int t) {
+  opt->rep.wal_compression = static_cast<CompressionType>(t);
+}
+
 static BlockBasedTableOptions* get_block_based_table_options(
     crocksdb_options_t* opt) {
   if (opt && opt->rep.table_factory != nullptr) {

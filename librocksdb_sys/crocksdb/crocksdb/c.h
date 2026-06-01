@@ -1368,6 +1368,8 @@ extern C_ROCKSDB_LIBRARY_API void crocksdb_options_set_max_subcompactions(
     crocksdb_options_t*, uint32_t);
 extern C_ROCKSDB_LIBRARY_API void crocksdb_options_set_wal_bytes_per_sync(
     crocksdb_options_t*, uint64_t);
+extern C_ROCKSDB_LIBRARY_API void crocksdb_options_set_wal_compression(
+    crocksdb_options_t*, int);
 
 enum {
   crocksdb_tolerate_corrupted_tail_records_recovery = 0,

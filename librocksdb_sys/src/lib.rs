@@ -846,6 +846,10 @@ extern "C" {
         options: *mut Options,
         compression_style_no: DBCompressionType,
     );
+    pub fn crocksdb_options_set_wal_compression(
+        options: *mut Options,
+        compression_type: DBCompressionType,
+    );
     pub fn crocksdb_options_get_compression(options: *mut Options) -> DBCompressionType;
     pub fn crocksdb_options_set_compression_options(
         options: *mut Options,
