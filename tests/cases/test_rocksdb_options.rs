@@ -443,11 +443,24 @@ fn test_set_bytes_per_sync() {
 
 #[test]
 fn test_set_wal_compression() {
-    let path = tempdir_with_prefix("_rust_rocksdb_wal_compression");
-    let mut opts = DBOptions::new();
-    opts.create_if_missing(true);
-    opts.set_wal_compression(DBCompressionType::Zstd);
-    DB::open(opts, path.path().to_str().unwrap()).unwrap();
+    for compression in [DBCompressionType::Zstd, DBCompressionType::Lz4] {
+        let path = tempdir_with_prefix("_rust_rocksdb_wal_compression");
+        let path = path.path().to_str().unwrap();
+        let value = vec![b'a'; 100 * 1024];
+
+        let mut opts = DBOptions::new();
+        opts.create_if_missing(true);
+        opts.set_wal_compression(compression);
+        let db = DB::open(opts, path).unwrap();
+        db.put(b"k", &value).unwrap();
+        drop(db);
+
+        let mut opts = DBOptions::new();
+        opts.create_if_missing(false);
+        opts.set_wal_compression(compression);
+        let db = DB::open(opts, path).unwrap();
+        assert_eq!(&*db.get(b"k").unwrap().unwrap(), value.as_slice());
+    }
 }
 
 #[test]
