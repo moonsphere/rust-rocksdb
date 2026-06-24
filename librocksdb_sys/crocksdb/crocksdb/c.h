@@ -2769,6 +2769,9 @@ extern C_ROCKSDB_LIBRARY_API void ctitandb_options_set_max_background_gc(
 extern C_ROCKSDB_LIBRARY_API void ctitandb_options_set_gc_rate_limiter(
     ctitandb_options_t* options, crocksdb_ratelimiter_t* limiter);
 
+extern C_ROCKSDB_LIBRARY_API crocksdb_ratelimiter_t*
+ctitandb_options_get_gc_rate_limiter(ctitandb_options_t* options);
+
 extern C_ROCKSDB_LIBRARY_API void
 ctitandb_options_set_purge_obsolete_files_period_sec(
     ctitandb_options_t* options, unsigned int period);

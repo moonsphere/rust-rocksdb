@@ -1767,7 +1767,14 @@ impl DB {
     pub fn get_db_options(&self) -> DBOptions {
         unsafe {
             let inner = crocksdb_ffi::crocksdb_get_db_options(self.inner);
-            DBOptions::from_raw(inner)
+            let mut opts = DBOptions::from_raw(inner);
+            // If the DB was opened with Titan, also fetch the live Titan DB
+            // options so Titan-level handles (e.g. the GC rate limiter) are
+            // reachable from the returned options.
+            if !self.opts.titan_inner.is_null() {
+                opts.titan_inner = crocksdb_ffi::ctitandb_get_titan_db_options(self.inner);
+            }
+            opts
         }
     }
 

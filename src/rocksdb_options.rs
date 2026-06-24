@@ -1237,6 +1237,19 @@ impl DBOptions {
         }
     }
 
+    pub fn get_titan_gc_rate_limiter(&self) -> Option<RateLimiter> {
+        if self.titan_inner.is_null() {
+            return None;
+        }
+        let limiter =
+            unsafe { crocksdb_ffi::ctitandb_options_get_gc_rate_limiter(self.titan_inner) };
+        if limiter.is_null() {
+            None
+        } else {
+            Some(RateLimiter { inner: limiter })
+        }
+    }
+
     pub fn get_write_buffer_manager(&self) -> Option<WriteBufferManager> {
         let manager =
             unsafe { crocksdb_ffi::crocksdb_options_get_write_buffer_manager(self.inner) };

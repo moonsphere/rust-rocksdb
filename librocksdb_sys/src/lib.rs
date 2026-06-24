@@ -2956,6 +2956,9 @@ extern "C" {
         opts: *mut DBTitanDBOptions,
         limiter: *mut DBRateLimiter,
     );
+    pub fn ctitandb_options_get_gc_rate_limiter(
+        opts: *mut DBTitanDBOptions,
+    ) -> *mut DBRateLimiter;
     pub fn ctitandb_options_set_purge_obsolete_files_period_sec(
         opts: *mut DBTitanDBOptions,
         period: usize,

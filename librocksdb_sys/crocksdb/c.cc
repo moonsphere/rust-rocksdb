@@ -6925,6 +6925,16 @@ void ctitandb_options_set_gc_rate_limiter(ctitandb_options_t* options,
   }
 }
 
+crocksdb_ratelimiter_t* ctitandb_options_get_gc_rate_limiter(
+    ctitandb_options_t* options) {
+  if (options->rep.gc_rate_limiter != nullptr) {
+    crocksdb_ratelimiter_t* limiter = new crocksdb_ratelimiter_t;
+    limiter->rep = options->rep.gc_rate_limiter;
+    return limiter;
+  }
+  return nullptr;
+}
+
 void ctitandb_options_set_purge_obsolete_files_period_sec(
     ctitandb_options_t* options, unsigned int period) {
   options->rep.purge_obsolete_files_period_sec = period;
