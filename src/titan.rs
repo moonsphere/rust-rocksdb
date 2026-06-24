@@ -4,6 +4,7 @@ use std::ops::Deref;
 use crocksdb_ffi::{self, DBCompressionType, DBTitanBlobIndex, DBTitanDBOptions};
 use librocksdb_sys::{ctitandb_encode_blob_index, DBTitanDBBlobRunMode};
 use rocksdb::Cache;
+use rocksdb_options::RateLimiter;
 use std::ops::DerefMut;
 use std::ptr;
 use std::slice;
@@ -104,6 +105,12 @@ impl TitanDBOptions {
     pub fn set_max_background_gc(&mut self, size: i32) {
         unsafe {
             crocksdb_ffi::ctitandb_options_set_max_background_gc(self.inner, size);
+        }
+    }
+
+    pub fn set_gc_rate_limiter(&mut self, limiter: &RateLimiter) {
+        unsafe {
+            crocksdb_ffi::ctitandb_options_set_gc_rate_limiter(self.inner, limiter.inner);
         }
     }
 

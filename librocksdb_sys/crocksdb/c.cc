@@ -6918,6 +6918,13 @@ void ctitandb_options_set_max_background_gc(ctitandb_options_t* options,
   options->rep.max_background_gc = size;
 }
 
+void ctitandb_options_set_gc_rate_limiter(ctitandb_options_t* options,
+                                          crocksdb_ratelimiter_t* limiter) {
+  if (limiter) {
+    options->rep.gc_rate_limiter = limiter->rep;
+  }
+}
+
 void ctitandb_options_set_purge_obsolete_files_period_sec(
     ctitandb_options_t* options, unsigned int period) {
   options->rep.purge_obsolete_files_period_sec = period;

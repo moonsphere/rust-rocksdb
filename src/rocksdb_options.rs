@@ -219,7 +219,7 @@ impl BlockBasedOptions {
 }
 
 pub struct RateLimiter {
-    inner: *mut DBRateLimiter,
+    pub(crate) inner: *mut DBRateLimiter,
 }
 
 unsafe impl Send for RateLimiter {}
