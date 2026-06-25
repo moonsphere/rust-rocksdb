@@ -146,6 +146,12 @@ impl TitanDBOptions {
         }
     }
 
+    pub fn set_blob_gc_readahead_size(&mut self, size: u64) {
+        unsafe {
+            crocksdb_ffi::ctitandb_options_set_blob_gc_readahead_size(self.inner, size);
+        }
+    }
+
     pub fn set_blob_cache(&mut self, cache: &Cache) {
         unsafe {
             crocksdb_ffi::ctitandb_options_set_blob_cache(self.inner, cache.inner);
