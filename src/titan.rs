@@ -114,6 +114,20 @@ impl TitanDBOptions {
         }
     }
 
+    /// Registers hooks invoked on Titan's background GC thread around the blob
+    /// GC IO phase. The embedder can use them to tag that thread's IO (e.g. set
+    /// a thread-local IO type) so blob GC IO is prioritized distinctly.
+    pub fn set_gc_io_hook(
+        &mut self,
+        arg: *mut std::os::raw::c_void,
+        enter: extern "C" fn(*mut std::os::raw::c_void),
+        exit: extern "C" fn(*mut std::os::raw::c_void),
+    ) {
+        unsafe {
+            crocksdb_ffi::ctitandb_options_set_gc_io_hook(self.inner, arg, enter, exit);
+        }
+    }
+
     pub fn set_purge_obsolete_files_period(&mut self, period: usize) {
         unsafe {
             crocksdb_ffi::ctitandb_options_set_purge_obsolete_files_period_sec(self.inner, period);

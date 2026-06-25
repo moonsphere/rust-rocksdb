@@ -2959,6 +2959,12 @@ extern "C" {
     pub fn ctitandb_options_get_gc_rate_limiter(
         opts: *mut DBTitanDBOptions,
     ) -> *mut DBRateLimiter;
+    pub fn ctitandb_options_set_gc_io_hook(
+        opts: *mut DBTitanDBOptions,
+        arg: *mut c_void,
+        enter: extern "C" fn(*mut c_void),
+        exit: extern "C" fn(*mut c_void),
+    );
     pub fn ctitandb_options_set_purge_obsolete_files_period_sec(
         opts: *mut DBTitanDBOptions,
         period: usize,
