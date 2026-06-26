@@ -2755,6 +2755,12 @@ extern C_ROCKSDB_LIBRARY_API void ctitandb_options_set_max_gc_batch_size(
 extern C_ROCKSDB_LIBRARY_API void ctitandb_options_set_blob_gc_readahead_size(
     ctitandb_options_t* options, uint64_t size);
 
+extern C_ROCKSDB_LIBRARY_API void ctitandb_options_set_block_size(
+    ctitandb_options_t* options, uint64_t size);
+
+extern C_ROCKSDB_LIBRARY_API void ctitandb_options_set_punch_hole_threshold(
+    ctitandb_options_t* options, uint64_t size);
+
 extern C_ROCKSDB_LIBRARY_API void ctitandb_options_set_min_gc_batch_size(
     ctitandb_options_t* options, uint64_t size);
 

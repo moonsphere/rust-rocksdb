@@ -6903,6 +6903,16 @@ void ctitandb_options_set_blob_gc_readahead_size(ctitandb_options_t* options,
   options->rep.blob_gc_readahead_size = size;
 }
 
+void ctitandb_options_set_block_size(ctitandb_options_t* options,
+                                     uint64_t size) {
+  options->rep.block_size = size;
+}
+
+void ctitandb_options_set_punch_hole_threshold(ctitandb_options_t* options,
+                                               uint64_t size) {
+  options->rep.punch_hole_threshold = size;
+}
+
 void ctitandb_options_set_min_gc_batch_size(ctitandb_options_t* options,
                                             uint64_t size) {
   options->rep.min_gc_batch_size = size;

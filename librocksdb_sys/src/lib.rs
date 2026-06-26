@@ -2975,6 +2975,11 @@ extern "C" {
         opts: *mut DBTitanDBOptions,
         size: u64,
     );
+    pub fn ctitandb_options_set_block_size(opts: *mut DBTitanDBOptions, size: u64);
+    pub fn ctitandb_options_set_punch_hole_threshold(
+        opts: *mut DBTitanDBOptions,
+        size: u64,
+    );
     pub fn ctitandb_options_set_blob_cache(opts: *mut DBTitanDBOptions, cache: *mut DBCache);
     pub fn ctitandb_options_get_blob_cache_usage(options: *const DBTitanDBOptions) -> usize;
     pub fn ctitandb_options_set_blob_cache_capacity(

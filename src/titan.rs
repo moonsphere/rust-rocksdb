@@ -152,6 +152,18 @@ impl TitanDBOptions {
         }
     }
 
+    pub fn set_block_size(&mut self, size: u64) {
+        unsafe {
+            crocksdb_ffi::ctitandb_options_set_block_size(self.inner, size);
+        }
+    }
+
+    pub fn set_punch_hole_threshold(&mut self, size: u64) {
+        unsafe {
+            crocksdb_ffi::ctitandb_options_set_punch_hole_threshold(self.inner, size);
+        }
+    }
+
     pub fn set_blob_cache(&mut self, cache: &Cache) {
         unsafe {
             crocksdb_ffi::ctitandb_options_set_blob_cache(self.inner, cache.inner);
