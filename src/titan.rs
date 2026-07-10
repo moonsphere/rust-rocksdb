@@ -108,6 +108,32 @@ impl TitanDBOptions {
         }
     }
 
+    pub fn set_enable_gc_sampling(&mut self, enable: bool) {
+        unsafe {
+            crocksdb_ffi::ctitandb_options_set_enable_gc_sampling(self.inner, enable);
+        }
+    }
+
+    pub fn set_gc_sampling_files_per_round(&mut self, files: u64) {
+        unsafe {
+            crocksdb_ffi::ctitandb_options_set_gc_sampling_files_per_round(self.inner, files);
+        }
+    }
+
+    pub fn set_gc_sampling_records_per_file(&mut self, records: u64) {
+        unsafe {
+            crocksdb_ffi::ctitandb_options_set_gc_sampling_records_per_file(self.inner, records);
+        }
+    }
+
+    pub fn set_gc_sampling_min_interval_seconds(&mut self, seconds: u64) {
+        unsafe {
+            crocksdb_ffi::ctitandb_options_set_gc_sampling_min_interval_seconds(
+                self.inner, seconds,
+            );
+        }
+    }
+
     pub fn set_gc_rate_limiter(&mut self, limiter: &RateLimiter) {
         unsafe {
             crocksdb_ffi::ctitandb_options_set_gc_rate_limiter(self.inner, limiter.inner);

@@ -6923,6 +6923,26 @@ void ctitandb_options_set_blob_file_discardable_ratio(
   options->rep.blob_file_discardable_ratio = ratio;
 }
 
+void ctitandb_options_set_enable_gc_sampling(ctitandb_options_t* options,
+                                             unsigned char enable) {
+  options->rep.enable_gc_sampling = enable;
+}
+
+void ctitandb_options_set_gc_sampling_files_per_round(
+    ctitandb_options_t* options, uint64_t files) {
+  options->rep.gc_sampling_files_per_round = files;
+}
+
+void ctitandb_options_set_gc_sampling_records_per_file(
+    ctitandb_options_t* options, uint64_t records) {
+  options->rep.gc_sampling_records_per_file = records;
+}
+
+void ctitandb_options_set_gc_sampling_min_interval_seconds(
+    ctitandb_options_t* options, uint64_t seconds) {
+  options->rep.gc_sampling_min_interval_seconds = seconds;
+}
+
 void ctitandb_options_set_merge_small_file_threshold(
     ctitandb_options_t* options, uint64_t size) {
   options->rep.merge_small_file_threshold = size;

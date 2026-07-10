@@ -2971,6 +2971,19 @@ extern "C" {
     );
     pub fn ctitandb_options_set_min_gc_batch_size(opts: *mut DBTitanDBOptions, size: u64);
     pub fn ctitandb_options_set_max_gc_batch_size(opts: *mut DBTitanDBOptions, size: u64);
+    pub fn ctitandb_options_set_enable_gc_sampling(opts: *mut DBTitanDBOptions, enable: bool);
+    pub fn ctitandb_options_set_gc_sampling_files_per_round(
+        opts: *mut DBTitanDBOptions,
+        files: u64,
+    );
+    pub fn ctitandb_options_set_gc_sampling_records_per_file(
+        opts: *mut DBTitanDBOptions,
+        records: u64,
+    );
+    pub fn ctitandb_options_set_gc_sampling_min_interval_seconds(
+        opts: *mut DBTitanDBOptions,
+        seconds: u64,
+    );
     pub fn ctitandb_options_set_blob_gc_readahead_size(
         opts: *mut DBTitanDBOptions,
         size: u64,

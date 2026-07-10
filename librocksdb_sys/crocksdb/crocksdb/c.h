@@ -2768,6 +2768,21 @@ extern C_ROCKSDB_LIBRARY_API void
 ctitandb_options_set_blob_file_discardable_ratio(ctitandb_options_t* options,
                                                  double ratio);
 
+extern C_ROCKSDB_LIBRARY_API void ctitandb_options_set_enable_gc_sampling(
+    ctitandb_options_t* options, unsigned char enable);
+
+extern C_ROCKSDB_LIBRARY_API void
+ctitandb_options_set_gc_sampling_files_per_round(ctitandb_options_t* options,
+                                                 uint64_t files);
+
+extern C_ROCKSDB_LIBRARY_API void
+ctitandb_options_set_gc_sampling_records_per_file(ctitandb_options_t* options,
+                                                  uint64_t records);
+
+extern C_ROCKSDB_LIBRARY_API void
+ctitandb_options_set_gc_sampling_min_interval_seconds(
+    ctitandb_options_t* options, uint64_t seconds);
+
 extern C_ROCKSDB_LIBRARY_API void
 ctitandb_options_set_merge_small_file_threshold(ctitandb_options_t* options,
                                                 uint64_t size);
