@@ -2784,6 +2784,10 @@ ctitandb_options_set_gc_sampling_min_interval_seconds(
     ctitandb_options_t* options, uint64_t seconds);
 
 extern C_ROCKSDB_LIBRARY_API void
+ctitandb_options_set_gc_sampling_round_interval_seconds(
+    ctitandb_options_t* options, uint64_t seconds);
+
+extern C_ROCKSDB_LIBRARY_API void
 ctitandb_options_set_merge_small_file_threshold(ctitandb_options_t* options,
                                                 uint64_t size);
 

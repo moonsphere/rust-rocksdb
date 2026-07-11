@@ -2984,6 +2984,10 @@ extern "C" {
         opts: *mut DBTitanDBOptions,
         seconds: u64,
     );
+    pub fn ctitandb_options_set_gc_sampling_round_interval_seconds(
+        opts: *mut DBTitanDBOptions,
+        seconds: u64,
+    );
     pub fn ctitandb_options_set_blob_gc_readahead_size(
         opts: *mut DBTitanDBOptions,
         size: u64,

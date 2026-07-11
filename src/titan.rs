@@ -134,6 +134,14 @@ impl TitanDBOptions {
         }
     }
 
+    pub fn set_gc_sampling_round_interval_seconds(&mut self, seconds: u64) {
+        unsafe {
+            crocksdb_ffi::ctitandb_options_set_gc_sampling_round_interval_seconds(
+                self.inner, seconds,
+            );
+        }
+    }
+
     pub fn set_gc_rate_limiter(&mut self, limiter: &RateLimiter) {
         unsafe {
             crocksdb_ffi::ctitandb_options_set_gc_rate_limiter(self.inner, limiter.inner);
