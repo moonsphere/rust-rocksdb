@@ -2988,6 +2988,7 @@ extern "C" {
         opts: *mut DBTitanDBOptions,
         seconds: u64,
     );
+    pub fn ctitandb_options_set_gc_tick_period_sec(opts: *mut DBTitanDBOptions, seconds: u32);
     pub fn ctitandb_options_set_blob_gc_readahead_size(
         opts: *mut DBTitanDBOptions,
         size: u64,

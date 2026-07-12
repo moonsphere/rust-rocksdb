@@ -6948,6 +6948,11 @@ void ctitandb_options_set_gc_sampling_round_interval_seconds(
   options->rep.gc_sampling_round_interval_seconds = seconds;
 }
 
+void ctitandb_options_set_gc_tick_period_sec(ctitandb_options_t* options,
+                                             uint32_t seconds) {
+  options->rep.gc_tick_period_sec = seconds;
+}
+
 void ctitandb_options_set_merge_small_file_threshold(
     ctitandb_options_t* options, uint64_t size) {
   options->rep.merge_small_file_threshold = size;

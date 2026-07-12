@@ -142,6 +142,12 @@ impl TitanDBOptions {
         }
     }
 
+    pub fn set_gc_tick_period_sec(&mut self, seconds: u32) {
+        unsafe {
+            crocksdb_ffi::ctitandb_options_set_gc_tick_period_sec(self.inner, seconds);
+        }
+    }
+
     pub fn set_gc_rate_limiter(&mut self, limiter: &RateLimiter) {
         unsafe {
             crocksdb_ffi::ctitandb_options_set_gc_rate_limiter(self.inner, limiter.inner);
